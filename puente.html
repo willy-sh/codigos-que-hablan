@@ -8,23 +8,30 @@
     html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
       overflow: hidden;
+      background-color: black;
     }
     iframe {
-      border: none;
       width: 100vw;
       height: 100vh;
+      border: none;
+    }
+    audio {
+      display: none; /* Ocultamos los controles */
     }
   </style>
 </head>
-<body aria-label="Página turística de San Luis Potosí con audio guía activo">
-  <!-- AUDIO EN AUTOMÁTICO -->
+<body aria-label="Guía accesible con audio turístico y página informativa integrada">
+
+  <!-- AUDIO -->
   <audio autoplay>
     <source src="https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3" type="audio/mpeg">
     Tu navegador no soporta audio.
   </audio>
 
-  <!-- PÁGINA DE DESTINO -->
-  <iframe src="https://visitasanluispotosi.com/estado/" title="Contenido turístico San Luis Potosí"></iframe>
+  <!-- PÁGINA OFICIAL EN IFRAME -->
+  <iframe src="https://visitasanluispotosi.com/estado/" title="Sitio turístico San Luis Potosí"></iframe>
+
 </body>
 </html>
