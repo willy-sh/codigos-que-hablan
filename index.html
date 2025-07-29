@@ -1,74 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Códigos que Hablan - San Luis Potosí</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Guía Sonora - San Luis Potosí</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
       padding: 2em;
-      background: #000;
+      background-color: #000;
       color: #fff;
-      font-family: 'Arial', sans-serif;
+      font-family: sans-serif;
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       height: 100vh;
-    }
-    h1 {
-      font-size: 1.8em;
-      margin-bottom: 0.5em;
-    }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 1.5em;
-    }
-    a {
-      display: inline-block;
-      background: #0a84ff;
-      color: white;
-      padding: 1em 2em;
-      border-radius: 10px;
-      font-size: 1.1em;
-      text-decoration: none;
-    }
-    a:focus {
-      outline: 2px dashed #fff;
+      font-size: 1.3em;
     }
   </style>
 </head>
-<body aria-label="Página accesible con guía auditiva sobre San Luis Potosí">
+<body aria-label="Reproduciendo audio de bienvenida y redirigiendo a sitio turístico">
 
-  <h1>🎧 Bienvenido a la guía sonora de San Luis Potosí</h1>
-  <p>Tu audio comenzará automáticamente. Si no lo escuchas, asegúrate de que el volumen esté activo.</p>
-
-  <a href="https://visitasanluispotosi.com/estado/" target="_blank" rel="noopener noreferrer">
-    Ir al sitio oficial
-  </a>
-
-  <audio autoplay>
-    <source src="https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio.
-  </audio>
+  <p>🔊 Iniciando guía sonora... un momento por favor.</p>
 
   <script>
     window.onload = () => {
-      // Intentar reproducir en todos los dispositivos
-      const audio = document.querySelector("audio");
-      audio.play().catch(() => {
-        console.warn("Autoplay no permitido sin interacción. Esperando toque...");
-        document.body.addEventListener('click', () => {
-          audio.play();
-        }, { once: true });
-      });
+      // Vibración en Android
+      if (navigator.vibrate) navigator.vibrate([150, 100, 150]);
 
-      // Vibración inicial en Android
-      if (navigator.vibrate) {
-        navigator.vibrate([100, 50, 100]);
-      }
+      // Crear objeto de audio
+      const audio = new Audio("https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3");
+      audio.volume = 1.0;
+      audio.autoplay = true;
+
+      // Intentar reproducir inmediatamente
+      audio.play().then(() => {
+        // Redirigir después de 1 segundo desde que empieza el audio
+        setTimeout(() => {
+          window.location.href = "https://visitasanluispotosi.com/estado/";
+        }, 1000);
+      }).catch((err) => {
+        // Si falla, redirige igual (por ejemplo, en iOS sin interacción)
+        console.warn("Error al reproducir audio automático:", err);
+        window.location.href = "https://visitasanluispotosi.com/estado/";
+      });
     };
   </script>
+
 </body>
 </html>
