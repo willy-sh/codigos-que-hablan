@@ -2,53 +2,40 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Códigos que Hablan - San Luis Potosí</title>
+  <title>Guía Sonora San Luis Potosí</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background-color: black;
-      color: white;
+      background: #000;
+      color: #fff;
       font-family: sans-serif;
-      font-size: 1.4em;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
       text-align: center;
+      font-size: 1.4em;
+    }
+    .oculto {
+      opacity: 0;
+      height: 1px;
+      overflow: hidden;
     }
   </style>
 </head>
-<body>
-  <p>🔊 Iniciando guía sonora...</p>
+<body aria-label="Guía sonora de San Luis Potosí. El audio se está reproduciendo.">
 
-  <script>
-    // Vibración para Android
-    if (navigator.vibrate) navigator.vibrate([150, 100, 150]);
+  <p>🔊 Bienvenido a la guía sonora de San Luis Potosí</p>
+  <p>🌐 Sitio oficial disponible en segundo plano</p>
 
-    const audio = new Audio("https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3");
-    audio.muted = true;
+  <!-- Audio real -->
+  <audio autoplay>
+    <source src="https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3" type="audio/mpeg">
+  </audio>
 
-    audio.play().then(() => {
-      // Esperar 300ms para desmutear (truco para autoplay móvil)
-      setTimeout(() => {
-        audio.muted = false;
-        audio.play().catch(() => {});
-        
-        // Abrir sitio oficial después de 2.5 segundos
-        setTimeout(() => {
-          window.open("https://visitasanluispotosi.com/estado/", "_blank");
-        }, 2500);
-      }, 300);
-    }).catch((err) => {
-      console.warn("Error de reproducción automática:", err);
-      // Fallback si autoplay falla: abrir la web de todos modos
-      window.open("https://visitasanluispotosi.com/estado/", "_blank");
-    });
+  <!-- Enlace oculto para abrir el sitio oficial si alguien lo requiere -->
+  <a class="oculto" href="https://visitasanluispotosi.com/estado/" target="_blank" rel="noopener">Abrir sitio oficial</a>
 
-    // Fallback final: redirigir igual si nada pasó
-    setTimeout(() => {
-      window.open("https://visitasanluispotosi.com/estado/", "_blank");
-    }, 6000);
-  </script>
 </body>
 </html>
