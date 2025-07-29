@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Guía turística sonora</title>
+  <title>San Luis Potosí - Guía Sonora</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
@@ -10,24 +10,38 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
+      background-color: black;
       font-family: sans-serif;
     }
     iframe {
-      border: none;
       width: 100vw;
       height: 100vh;
+      border: none;
     }
     audio {
       display: none;
     }
   </style>
 </head>
-<body aria-label="Guía accesible con audio turístico">
-  <audio autoplay controls>
+<body aria-label="Guía turística de San Luis Potosí con audio para personas con discapacidad visual">
+
+  <!-- Vibración al cargar (solo Android) -->
+  <script>
+    window.onload = function() {
+      if (navigator.vibrate) {
+        navigator.vibrate([200, 100, 200]);
+      }
+    };
+  </script>
+
+  <!-- Audio de bienvenida -->
+  <audio autoplay>
     <source src="https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3" type="audio/mpeg">
     Tu navegador no soporta audio.
   </audio>
 
+  <!-- Página oficial incrustada -->
   <iframe src="https://visitasanluispotosi.com/estado/" title="Sitio turístico San Luis Potosí"></iframe>
+
 </body>
 </html>
