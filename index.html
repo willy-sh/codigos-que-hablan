@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Guía Sonora - San Luis Potosí</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 2em;
+      background-color: #000;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 1.3em;
+    }
+  </style>
+</head>
+<body>
+  <p>🔊 Iniciando guía sonora de San Luis Potosí...</p>
+
+  <script>
+    if (navigator.vibrate) navigator.vibrate([150, 100, 150]);
+
+    const audio = new Audio("data:audio/mp3;base64,{AQUÍ_VA_TODO_EL_BASE64}");
+
+    // Autoplay y desmutear de inmediato (si lo pide el navegador)
+    audio.autoplay = true;
+    audio.play().catch(() => {
+      console.warn("Intento de autoplay bloqueado");
+    });
+
+    // Redirigir solo cuando realmente empieza a sonar
+    audio.onplaying = () => {
+      console.log("Audio está sonando, redireccionando en 2.5 segundos...");
+      setTimeout(() => {
+        window.location.href = "https://visitasanluispotosi.com/estado/";
+      }, 2500);
+    };
+
+    // Fallback: redirigir igual si no empieza nunca (máx. 6s)
+    setTimeout(() => {
+      window.location.href = "https://visitasanluispotosi.com/estado/";
+    }, 6000);
+  </script>
+
+</body>
+</html>
