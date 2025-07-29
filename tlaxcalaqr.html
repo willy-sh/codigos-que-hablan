@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Barrio Tlaxcala - Códigos que Hablan</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #1a1a1a, #000);
+      color: #ffffff;
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #111;
+      padding: 1em 0;
+      box-shadow: 0 0 20px #00ffcc;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2em;
+      color: #00ffcc;
+      margin: 0;
+      animation: neon-pulse 2s infinite alternate;
+    }
+
+    @keyframes neon-pulse {
+      0% {
+        text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+      }
+      100% {
+        text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+      }
+    }
+
+    main {
+      padding: 2em;
+      animation: fade-in 1s ease-in-out;
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00ffcc66;
+      margin-bottom: 1.5em;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-image:hover {
+      transform: scale(1.02);
+    }
+
+    .highlight {
+      color: #00ffcc;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5em;
+      margin-top: 2em;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffcc44;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6em;
+      max-width: 800px;
+      margin: 0 auto 1.5em;
+    }
+
+    footer {
+      margin-top: 2em;
+      padding: 1em;
+      font-size: 0.9em;
+      color: #888;
+      background: #111;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5em;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Barrio Tlaxcala: El Origen de la Ciudad</h1>
+  </header>
+
+  <main>
+    <img src="https://visitasanluispotosi.com/wp-content/uploads/2023/02/ciudad-slp.jpg" alt="Barrio Tlaxcala" class="hero-image">
+
+    <p>Descubre el <span class="highlight">Barrio de Tlaxcala</span>, un rincón mágico en San Luis Potosí donde la historia y la tradición cobran vida. Fundado hace siglos, es el lugar donde <span class="highlight">la paz con los pueblos chichimecas</span> dio origen a una nueva ciudad llena de cultura, fe y fuerza.</p>
+
+    <p>Conoce sus calles antiguas, sus fiestas patronales, su templo imponente y su esencia que resuena con orgullo potosino. Una experiencia <span class="highlight">sensorial y profunda</span> que ahora puedes vivir con sonido envolvente.</p>
+
+    <div class="gallery">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Plaza_del_Barrio_de_Tlaxcala_SLP.jpg/640px-Plaza_del_Barrio_de_Tlaxcala_SLP.jpg" alt="Plaza del barrio">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Iglesia_de_Tlaxcala_SLP.jpg/640px-Iglesia_de_Tlaxcala_SLP.jpg" alt="Iglesia de Tlaxcala">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Tlaxcala_tradicion.jpg/640px-Tlaxcala_tradicion.jpg" alt="Tradición Tlaxcalteca">
+    </div>
+
+    <audio autoplay loop>
+      <source src="https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3" type="audio/mpeg">
+      Tu navegador no soporta la reproducción automática de audio.
+    </audio>
+
+  </main>
+
+  <footer>
+    Proyecto inclusivo – Códigos que Hablan · San Luis Potosí 2025
+  </footer>
+
+</body>
+</html>
