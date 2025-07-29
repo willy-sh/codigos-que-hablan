@@ -2,33 +2,29 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Cargando...</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>
-    // Vibración y sonido al abrir
-    window.onload = () => {
-      // Vibración (compatible con Android)
-      if (navigator.vibrate) {
-        navigator.vibrate([100, 50, 100]);
-      }
-
-      // Sonido breve (con tono)
-      const beep = new Audio("https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg");
-      beep.play();
-
-      // Reproducir audio de guía
-      const audio = new Audio("https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3");
-      audio.autoplay = true;
-      audio.play();
-
-      // Redirigir después de unos segundos
-      setTimeout(() => {
-        window.location.href = "https://visitasanluispotosi.com/estado/";
-      }, 8000); // 8 segundos para que el audio inicie
-    };
-  </script>
+  <title>Códigos que Hablan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    iframe {
+      border: none;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
 </head>
-<body style="background-color: black; color: white; font-size: 1.5em; display: flex; align-items: center; justify-content: center; height: 100vh;">
-  <p>⏳ Cargando tu experiencia auditiva y visual...</p>
+<body aria-label="Página turística de San Luis Potosí con audio guía activo">
+  <!-- AUDIO EN AUTOMÁTICO -->
+  <audio autoplay>
+    <source src="https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <!-- PÁGINA DE DESTINO -->
+  <iframe src="https://visitasanluispotosi.com/estado/" title="Contenido turístico San Luis Potosí"></iframe>
 </body>
 </html>
