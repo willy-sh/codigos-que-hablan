@@ -6,12 +6,12 @@
     <title>Códigos que Hablan - San Luis Potosí</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
             background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
+            font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px;
-            margin: 0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -20,11 +20,10 @@
         }
         .container {
             max-width: 400px;
-            background: rgba(255, 255, 255, 0.1);
             padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         .logo {
             width: 80px;
@@ -37,183 +36,127 @@
             justify-content: center;
             font-size: 24px;
             color: #1e3c72;
-            font-weight: bold;
-        }
-        h1 {
-            margin: 0 0 10px;
-            font-size: 24px;
-        }
-        p {
-            margin: 10px 0;
-            opacity: 0.9;
-        }
-        .status {
-            margin: 15px 0;
-            padding: 10px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            font-size: 18px;
         }
         .countdown {
-            font-size: 24px;
+            font-size: 48px;
             font-weight: bold;
-            color: #ff6b35;
+            margin: 20px 0;
+        }
+        .status {
+            font-size: 16px;
+            margin: 10px 0;
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo" aria-hidden="true">SLP</div>
-        <h1>¡Bienvenido a San Luis Potosí!</h1>
-        <p>Códigos que Hablan - Turismo Accesible</p>
-        <p>Descubre la magia de nuestro estado, sus tradiciones, cultura y belleza natural. Visita nuestros sitios turísticos y vive una experiencia inolvidable.</p>
-        
-        <div class="status" id="status">
-            🔊 Reproduciendo mensaje de bienvenida...
-        </div>
-        
-        <div class="status">
-            Redirigiendo en <span class="countdown" id="countdown">5</span> segundos
-        </div>
+        <div class="logo">🎵</div>
+        <h1>Códigos que Hablan</h1>
+        <p class="status" id="status">Reproduciendo audio...</p>
+        <div class="countdown" id="countdown">5</div>
+        <p>Redirigiendo a San Luis Potosí Turismo</p>
     </div>
 
     <script>
-        // Configuración
-        const GOOGLE_DRIVE_ID = '1poa9jlpEh4xpGo3eSf-ZtYqE4bjjg2Ck';
-        const REDIRECT_URL = 'https://sectur.slp.gob.mx/';
-        const FALLBACK_TEXT = "Bienvenido a San Luis Potosí. Descubre la magia de nuestro estado, sus tradiciones, cultura y belleza natural. Visita nuestros sitios turísticos y vive una experiencia inolvidable.";
+        let countdown = 5;
+        let audioPlayed = false;
+        let redirectUrl = 'https://visitasanluispotosi.com/estado/';
         
-        let audioStarted = false;
-        
-        // Función para vibrar
+        // Función para vibrar (si está disponible)
         function vibrate() {
-            if ('vibrate' in navigator) {
-                navigator.vibrate([500, 200, 500]);
+            if (navigator.vibrate) {
+                navigator.vibrate([200, 100, 200]);
             }
         }
         
-        // Función para reproducir text-to-speech
-        function playTextToSpeech() {
-            if (audioStarted) return;
-            audioStarted = true;
+        // Función para reproducir audio
+        function playAudio() {
+            if (audioPlayed) return;
             
             try {
-                if ('speechSynthesis' in window) {
-                    speechSynthesis.cancel();
-                    
-                    const utterance = new SpeechSynthesisUtterance(FALLBACK_TEXT);
-                    utterance.lang = 'es-MX';
-                    utterance.rate = 0.8;
-                    utterance.pitch = 1;
-                    utterance.volume = 1;
-                    
-                    utterance.onstart = () => {
-                        document.getElementById('status').innerHTML = '🗣️ Reproduciendo mensaje...';
-                    };
-                    
-                    utterance.onend = () => {
-                        document.getElementById('status').innerHTML = '✅ Mensaje completado';
-                    };
-                    
-                    // Reproducir inmediatamente
-                    speechSynthesis.speak(utterance);
-                } else {
-                    document.getElementById('status').innerHTML = '📱 Audio no disponible - Redirigiendo...';
-                }
-            } catch (error) {
-                console.log('Error en text-to-speech:', error);
-                document.getElementById('status').innerHTML = '📱 Redirigiendo...';
-            }
-        }
-        
-        // Función para intentar audio de Google Drive
-        function tryGoogleDriveAudio() {
-            if (audioStarted) return;
-            
-            try {
-                const audio = new Audio(`https://drive.google.com/uc?export=download&id=${GOOGLE_DRIVE_ID}`);
-                audio.volume = 1;
+                // Intentar reproducir desde Google Drive
+                const audio = new Audio('https://drive.google.com/uc?export=download&id=1BuJlqmBvqOGOEKJhWJGvqOGOEKJhWJGv');
+                audio.volume = 1.0;
+                audio.preload = 'auto';
                 
-                audio.oncanplaythrough = () => {
-                    if (!audioStarted) {
-                        audioStarted = true;
-                        audio.play().catch(() => {
-                            // Si falla, usar text-to-speech
-                            audioStarted = false;
-                            playTextToSpeech();
-                        });
-                    }
-                };
+                audio.play().then(() => {
+                    audioPlayed = true;
+                    document.getElementById('status').textContent = '🔊 Audio reproduciéndose';
+                    vibrate();
+                }).catch(() => {
+                    // Fallback a texto a voz
+                    speakText();
+                });
                 
-                audio.onended = () => {
-                    document.getElementById('status').innerHTML = '✅ Audio completado';
-                };
-                
-                audio.onerror = () => {
-                    // Si falla, usar text-to-speech
-                    audioStarted = false;
-                    playTextToSpeech();
-                };
-                
-                audio.load();
-                
-                // Timeout: si no carga en 2 segundos, usar text-to-speech
+                // Timeout de seguridad
                 setTimeout(() => {
-                    if (!audioStarted) {
-                        playTextToSpeech();
+                    if (!audioPlayed) {
+                        speakText();
                     }
-                }, 2000);
+                }, 1000);
                 
             } catch (error) {
-                playTextToSpeech();
+                speakText();
+            }
+        }
+        
+        // Función de texto a voz como respaldo
+        function speakText() {
+            if (audioPlayed) return;
+            
+            try {
+                const utterance = new SpeechSynthesisUtterance(
+                    'Bienvenido a San Luis Potosí, un increíble destino turístico en el corazón de México. Descubre nuestras cuatro regiones: Altiplano, Centro, Media y Huasteca.'
+                );
+                utterance.lang = 'es-MX';
+                utterance.rate = 0.9;
+                utterance.volume = 1.0;
+                
+                speechSynthesis.speak(utterance);
+                audioPlayed = true;
+                document.getElementById('status').textContent = '🗣️ Mensaje de bienvenida';
+                vibrate();
+            } catch (error) {
+                document.getElementById('status').textContent = '📱 Código QR activado';
+                vibrate();
             }
         }
         
         // Función de cuenta regresiva
-        function startCountdown() {
-            let seconds = 5;
+        function updateCountdown() {
             const countdownElement = document.getElementById('countdown');
+            countdownElement.textContent = countdown;
             
-            const timer = setInterval(() => {
-                seconds--;
-                countdownElement.textContent = seconds;
-                
-                if (seconds <= 0) {
-                    clearInterval(timer);
-                    window.location.href = REDIRECT_URL;
-                }
-            }, 1000);
+            if (countdown <= 0) {
+                window.location.href = redirectUrl;
+                return;
+            }
+            
+            countdown--;
+            setTimeout(updateCountdown, 1000);
         }
         
-        // Inicialización
-        window.addEventListener('load', () => {
-            // Vibrar inmediatamente
+        // Inicializar cuando la página carga
+        window.addEventListener('load', function() {
             vibrate();
             
+            // Intentar reproducir audio inmediatamente
+            setTimeout(playAudio, 100);
+            
             // Iniciar cuenta regresiva
-            startCountdown();
-            
-            // Intentar audio inmediatamente
-            setTimeout(() => {
-                tryGoogleDriveAudio();
-            }, 100);
-            
-            // Backup: si no hay interacción, usar text-to-speech
-            setTimeout(() => {
-                if (!audioStarted) {
-                    playTextToSpeech();
-                }
-            }, 1000);
+            setTimeout(updateCountdown, 1000);
         });
         
-        // Activar audio con cualquier interacción
-        ['click', 'touchstart', 'keydown'].forEach(eventType => {
-            document.addEventListener(eventType, () => {
-                if (!audioStarted) {
-                    tryGoogleDriveAudio();
-                }
-            }, { once: true });
-        });
+        // Reproducir audio en cualquier interacción del usuario
+        document.addEventListener('click', playAudio);
+        document.addEventListener('touchstart', playAudio);
+        document.addEventListener('keydown', playAudio);
+        
+        // Reproducir audio después de 1 segundo como respaldo
+        setTimeout(playAudio, 1000);
     </script>
+</body>
+</html>
 </body>
 </html>
