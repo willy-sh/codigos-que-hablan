@@ -19,31 +19,36 @@
   </style>
 </head>
 <body>
-  <p>🔊 Cargando guía sonora, por favor espera...</p>
+  <p>🔊 Iniciando guía sonora...</p>
 
   <script>
     // Vibración para Android
     if (navigator.vibrate) navigator.vibrate([150, 100, 150]);
 
-    // Usar la URL correcta desde GitHub Pages (NO github.com)
     const audio = new Audio("https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3");
-    audio.autoplay = true;
-    audio.volume = 1.0;
+    audio.muted = true;
 
-    // Reproducir el audio y luego abrir el sitio oficial en una nueva pestaña
     audio.play().then(() => {
-      console.log("Audio sonando correctamente");
-
-      // Abrir nueva pestaña con el sitio oficial después de 1 segundo
+      // Esperar 300ms para desmutear (truco para autoplay móvil)
       setTimeout(() => {
-        window.open("https://visitasanluispotosi.com/estado/", "_blank");
-      }, 1000);
+        audio.muted = false;
+        audio.play().catch(() => {});
+        
+        // Abrir sitio oficial después de 2.5 segundos
+        setTimeout(() => {
+          window.open("https://visitasanluispotosi.com/estado/", "_blank");
+        }, 2500);
+      }, 300);
     }).catch((err) => {
-      console.warn("Error en reproducción automática:", err);
-
-      // Fallback si no funciona el audio, al menos abre la web
+      console.warn("Error de reproducción automática:", err);
+      // Fallback si autoplay falla: abrir la web de todos modos
       window.open("https://visitasanluispotosi.com/estado/", "_blank");
     });
+
+    // Fallback final: redirigir igual si nada pasó
+    setTimeout(() => {
+      window.open("https://visitasanluispotosi.com/estado/", "_blank");
+    }, 6000);
   </script>
 </body>
 </html>
