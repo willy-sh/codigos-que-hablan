@@ -26,24 +26,26 @@
   <script>
     if (navigator.vibrate) navigator.vibrate([150, 100, 150]);
 
-    const audio = new Audio("data:audio/mp3;base64,{AQUÍ_VA_TODO_EL_BASE64}");
-
-    // Autoplay y desmutear de inmediato (si lo pide el navegador)
+    const audio = new Audio("https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3");
     audio.autoplay = true;
-    audio.play().catch(() => {
-      console.warn("Intento de autoplay bloqueado");
+    audio.volume = 1.0;
+
+    // Intentar reproducir inmediatamente
+    audio.play().catch((err) => {
+      console.warn("Intento de autoplay bloqueado:", err);
     });
 
-    // Redirigir solo cuando realmente empieza a sonar
+    // Redirigir cuando realmente empieza a sonar
     audio.onplaying = () => {
-      console.log("Audio está sonando, redireccionando en 2.5 segundos...");
+      console.log("Audio sonando. Redireccionando...");
       setTimeout(() => {
         window.location.href = "https://visitasanluispotosi.com/estado/";
-      }, 2500);
+      }, 2500); // espera 2.5 segundos tras inicio real
     };
 
-    // Fallback: redirigir igual si no empieza nunca (máx. 6s)
+    // Redirección forzada por si no suena
     setTimeout(() => {
+      console.warn("Redirección forzada por timeout.");
       window.location.href = "https://visitasanluispotosi.com/estado/";
     }, 6000);
   </script>
