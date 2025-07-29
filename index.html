@@ -2,46 +2,54 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>San Luis Potosí - Guía Sonora</title>
+  <title>Códigos que Hablan - San Luis Potosí</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
+    body {
       background-color: black;
-      font-family: sans-serif;
-    }
-    iframe {
-      width: 100vw;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
-      border: none;
+      text-align: center;
+      font-size: 1.4em;
+      font-family: sans-serif;
+      padding: 2em;
     }
-    audio {
-      display: none;
+    button {
+      font-size: 1.2em;
+      padding: 1em 2em;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
   </style>
 </head>
-<body aria-label="Guía turística de San Luis Potosí con audio para personas con discapacidad visual">
+<body aria-label="Pantalla accesible con botón para iniciar audio y guía turística">
 
-  <!-- Vibración al cargar (solo Android) -->
+  <div>
+    <p>👆 Toca para iniciar la experiencia auditiva y visitar San Luis Potosí</p>
+    <button onclick="iniciar()">Iniciar</button>
+  </div>
+
   <script>
-    window.onload = function() {
-      if (navigator.vibrate) {
-        navigator.vibrate([200, 100, 200]);
-      }
-    };
+    function iniciar() {
+      if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+
+      const audio = new Audio("https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3");
+      audio.play().then(() => {
+        setTimeout(() => {
+          window.location.href = "https://visitasanluispotosi.com/estado/";
+        }, 8000); // Reproduce 8 segundos y luego redirige
+      }).catch(() => {
+        alert("Tu navegador no permite reproducir el audio automáticamente.");
+        window.location.href = "https://visitasanluispotosi.com/estado/";
+      });
+    }
   </script>
-
-  <!-- Audio de bienvenida -->
-  <audio autoplay>
-    <source src="https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio.
-  </audio>
-
-  <!-- Página oficial incrustada -->
-  <iframe src="https://visitasanluispotosi.com/estado/" title="Sitio turístico San Luis Potosí"></iframe>
 
 </body>
 </html>
