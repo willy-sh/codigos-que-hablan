@@ -2,55 +2,48 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Guía Sonora - San Luis Potosí</title>
+  <title>Códigos que Hablan - San Luis Potosí</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      margin: 0;
-      padding: 2em;
-      background-color: #000;
-      color: #fff;
+      background-color: black;
+      color: white;
       font-family: sans-serif;
-      text-align: center;
+      font-size: 1.4em;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      font-size: 1.3em;
-    }
-    a {
-      margin-top: 2em;
-      color: #0af;
-      font-size: 1.2em;
+      text-align: center;
     }
   </style>
 </head>
-<body aria-label="Guía sonora iniciada. Audio y sitio oficial abiertos.">
-
-  <p>🔊 Iniciando guía sonora accesible...</p>
-  <p>🌐 Abriendo el sitio oficial de San Luis Potosí...</p>
-
-  <a href="https://visitasanluispotosi.com/estado/" target="_blank" rel="noopener">
-    👉 Haz clic aquí si el sitio no se abrió automáticamente
-  </a>
+<body>
+  <p>🔊 Cargando guía sonora, por favor espera...</p>
 
   <script>
+    // Vibración para Android
     if (navigator.vibrate) navigator.vibrate([150, 100, 150]);
 
+    // Usar la URL correcta desde GitHub Pages (NO github.com)
     const audio = new Audio("https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3");
     audio.autoplay = true;
     audio.volume = 1.0;
-    audio.play().catch(err => console.warn("Autoplay bloqueado:", err));
 
-    // Abrir nueva pestaña con la página oficial
-    setTimeout(() => {
-      const nuevaVentana = window.open("https://visitasanluispotosi.com/estado/", "_blank");
-      if (!nuevaVentana) {
-        console.warn("Navegador bloqueó la nueva pestaña.");
-      }
-    }, 1000);
+    // Reproducir el audio y luego abrir el sitio oficial en una nueva pestaña
+    audio.play().then(() => {
+      console.log("Audio sonando correctamente");
+
+      // Abrir nueva pestaña con el sitio oficial después de 1 segundo
+      setTimeout(() => {
+        window.open("https://visitasanluispotosi.com/estado/", "_blank");
+      }, 1000);
+    }).catch((err) => {
+      console.warn("Error en reproducción automática:", err);
+
+      // Fallback si no funciona el audio, al menos abre la web
+      window.open("https://visitasanluispotosi.com/estado/", "_blank");
+    });
   </script>
-
 </body>
 </html>
