@@ -13,15 +13,27 @@
       font-family: sans-serif;
       text-align: center;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       font-size: 1.3em;
     }
+    a {
+      margin-top: 2em;
+      color: #0af;
+      font-size: 1.2em;
+    }
   </style>
 </head>
-<body>
-  <p>🔊 Iniciando guía sonora de San Luis Potosí...</p>
+<body aria-label="Guía sonora iniciada. Audio y sitio oficial abiertos.">
+
+  <p>🔊 Iniciando guía sonora accesible...</p>
+  <p>🌐 Abriendo el sitio oficial de San Luis Potosí...</p>
+
+  <a href="https://visitasanluispotosi.com/estado/" target="_blank" rel="noopener">
+    👉 Haz clic aquí si el sitio no se abrió automáticamente
+  </a>
 
   <script>
     if (navigator.vibrate) navigator.vibrate([150, 100, 150]);
@@ -29,25 +41,15 @@
     const audio = new Audio("https://willy-sh.github.io/codigos-que-hablan/AudioTurismo.mp3");
     audio.autoplay = true;
     audio.volume = 1.0;
+    audio.play().catch(err => console.warn("Autoplay bloqueado:", err));
 
-    // Intentar reproducir inmediatamente
-    audio.play().catch((err) => {
-      console.warn("Intento de autoplay bloqueado:", err);
-    });
-
-    // Redirigir cuando realmente empieza a sonar
-    audio.onplaying = () => {
-      console.log("Audio sonando. Redireccionando...");
-      setTimeout(() => {
-        window.location.href = "https://visitasanluispotosi.com/estado/";
-      }, 2500); // espera 2.5 segundos tras inicio real
-    };
-
-    // Redirección forzada por si no suena
+    // Abrir nueva pestaña con la página oficial
     setTimeout(() => {
-      console.warn("Redirección forzada por timeout.");
-      window.location.href = "https://visitasanluispotosi.com/estado/";
-    }, 6000);
+      const nuevaVentana = window.open("https://visitasanluispotosi.com/estado/", "_blank");
+      if (!nuevaVentana) {
+        console.warn("Navegador bloqueó la nueva pestaña.");
+      }
+    }, 1000);
   </script>
 
 </body>
