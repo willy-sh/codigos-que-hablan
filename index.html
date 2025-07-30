@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tlaxcala, SLP - Códigos que Hablan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      background-color: #f4f1ec;
+      color: #2c2c2c;
+    }
+    header {
+      background: #6a4e42;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .contenido {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .contenido img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    footer {
+      background: #3d2b24;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <audio id="audio" autoplay>
+    <source src="AudioTurismo.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    // Esto intenta reproducir el audio incluso si el navegador lo bloquea inicialmente
+    document.addEventListener('DOMContentLoaded', function () {
+      const audio = document.getElementById('audio');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(_ => {
+            // Éxito
+          })
+          .catch(error => {
+            // Si falla en móviles (como iOS), al menos intentamos de nuevo tras breve interacción
+            window.addEventListener('touchstart', () => audio.play(), { once: true });
+          });
+      }
+    });
+  </script>
+
+  <header>
+    <h1>Barrio de Tlaxcala, San Luis Potosí</h1>
+    <p>Proyecto inclusivo: Códigos que Hablan</p>
+  </header>
+
+  <div class="contenido">
+    <p>
+      Tlaxcala es el barrio más antiguo de San Luis Potosí. Con una profunda herencia indígena y colonial,
+      este rincón histórico resguarda templos, fiestas tradicionales y calles empedradas que siguen narrando siglos de historia.
+    </p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Iglesia_Tlaxcala_SLP.jpg/800px-Iglesia_Tlaxcala_SLP.jpg" alt="Templo Tlaxcala" />
+    <p>
+      Desde la llegada de los tlaxcaltecas hasta sus danzas, procesiones y gastronomía, este lugar es símbolo de identidad potosina.
+    </p>
+  </div>
+
+  <footer>
+    &copy; 2025 - Códigos que Hablan
+  </footer>
+</body>
+</html>
