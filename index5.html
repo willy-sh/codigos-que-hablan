@@ -50,6 +50,13 @@
       text-align: center;
       padding: 1rem;
     }
+    #touchOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: transparent;
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
@@ -57,11 +64,23 @@
     <source src="AudioTurismo.mp3" type="audio/mpeg" />
     Tu navegador no soporta audio.
   </audio>
-<script>
-  const audio = document.getElementById("audio");
-  window.addEventListener("touchstart", () => audio.play(), { once: true });
-</script>
-  
+
+  <div id="touchOverlay"></div>
+
+  <script>
+    const audio = document.getElementById("audio");
+    const overlay = document.getElementById("touchOverlay");
+
+    const playAudio = () => {
+      audio.play().then(() => {
+        overlay.style.display = "none";
+      }).catch(() => {
+        // nada
+      });
+    };
+
+    overlay.addEventListener("touchstart", playAudio, { once: true });
+    overlay.addEventListener("click", playAudio, { once: true });
   </script>
 
   <header>
