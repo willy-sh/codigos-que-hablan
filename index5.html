@@ -57,7 +57,11 @@
     <source src="AudioTurismo.mp3" type="audio/mpeg" />
     Tu navegador no soporta audio.
   </audio>
-
+<script>
+  const audio = document.getElementById("audio");
+  window.addEventListener("touchstart", () => audio.play(), { once: true });
+</script>
+  
   </script>
 
   <header>
