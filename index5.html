@@ -58,16 +58,6 @@
     Tu navegador no soporta audio.
   </audio>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const audio = document.getElementById('audio');
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          window.addEventListener('touchstart', () => audio.play(), { once: true });
-        });
-      }
-    });
   </script>
 
   <header>
