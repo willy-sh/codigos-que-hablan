@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tlaxcala, SLP - Códigos que Hablan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      background-color: #f4f1ec;
+      color: #2c2c2c;
+    }
+    header {
+      background: #6a4e42;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .contenido {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .contenido img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .contenido h2 {
+      font-size: 1.5rem;
+      color: #6a4e42;
+      margin-top: 2rem;
+    }
+    .contenido p {
+      line-height: 1.6;
+    }
+    footer {
+      background: #3d2b24;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <audio id="audio" autoplay>
+    <source src="AudioTurismo.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const audio = document.getElementById('audio');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          window.addEventListener('touchstart', () => audio.play(), { once: true });
+        });
+      }
+    });
+  </script>
+
+  <header>
+    <h1>Barrio de Tlaxcala, San Luis Potosí</h1>
+    <p>Proyecto inclusivo: Códigos que Hablan</p>
+  </header>
+
+  <div class="contenido">
+    <p>
+      Tlaxcala es el barrio más antiguo de San Luis Potosí. Con una profunda herencia indígena y colonial,
+      este rincón histórico resguarda templos, fiestas tradicionales y calles empedradas que siguen narrando siglos de historia.
+    </p>
+
+    <img src="https://www.visitasanluispotosi.com/storage/barrio_tlaxcala.jpg" alt="Templo de Tlaxcala" />
+
+    <h2>Patrimonio Cultural</h2>
+    <p>
+      La parroquia de Nuestra Señora de la Asunción, construida en el siglo XVII, es el corazón espiritual del barrio. Cada año, cientos de devotos participan en las procesiones y festividades que conmemoran a la virgen patrona.
+    </p>
+
+    <img src="https://www.visitasanluispotosi.com/storage/calles_tlaxcala.jpg" alt="Calles del barrio Tlaxcala" />
+
+    <h2>Gastronomía y Tradición</h2>
+    <p>
+      Tlaxcala también es conocida por sus mercados y platillos típicos, como las enchiladas potosinas, tamales de hoja de plátano y el tradicional atole.
+    </p>
+
+    <img src="https://www.visitasanluispotosi.com/storage/comida_tipica.jpg" alt="Comida típica potosina" />
+  </div>
+
+  <footer>
+    &copy; 2025 - Códigos que Hablan
+  </footer>
+</body>
+</html>
