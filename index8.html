@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tierra Nueva, Pueblo Mágico de San Luis Potosí - Códigos que Hablan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { margin: 0; font-family: "Georgia", serif; background-color: #f0f9f0; color: #1e3d1e; }
+    header { background: #2a5d2a; color: #ffffff; padding: 1.5rem; text-align: center; }
+    h1 { margin: 0; font-size: 2rem; }
+    header p { font-size: 1.1rem; color: #c7f5c7; }
+    .contenido { max-width: 900px; margin: auto; padding: 2rem; }
+    .contenido img { max-width: 100%; border-radius: 8px; margin: 1.5rem 0; display: block; }
+    .contenido h2 { font-size: 1.5rem; color: #2a5d2a; margin-top: 2rem; }
+    .contenido p { line-height: 1.6; }
+    footer { background: #1c3b1c; color: white; text-align: center; padding: 1rem; }
+    #touchOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 9999; }
+  </style>
+</head>
+<body>
+  <audio id="audio" autoplay>
+    <source src="AudioTierraNueva.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
+  <div id="touchOverlay"></div>
+  <script>
+    const audio = document.getElementById("audio");
+    const overlay = document.getElementById("touchOverlay");
+    const playAudio = () => {
+      audio.play().then(() => { overlay.style.display = "none"; }).catch(() => {});
+    };
+    overlay.addEventListener("touchstart", playAudio, { once: true });
+    overlay.addEventListener("click", playAudio, { once: true });
+  </script>
+  <header>
+    <h1>Tierra Nueva, Pueblo Mágico de San Luis Potosí</h1>
+    <p>Proyecto inclusivo: Códigos que Hablan</p>
+  </header>
+  <div class="contenido">
+    <p>
+      Tierra Nueva, en la Región Centro de San Luis Potosí, a 72 kilómetros al sureste de la capital, es un Pueblo Mágico fundado en 1712 por familias otomíes. Sus calles de laja roja, sangre de pichón crujen bajo tus pies, mientras el aroma a maíz tostado y dulce de agave llena el aire.
+    </p>
+    <p>
+      Visita la fábrica de Palmoro Hats, donde el suave roce de las fibras de palma se transforma en sombreros, un símbolo mexicano. En el Jardín Hidalgo, el murmullo de las conversaciones se mezcla con el sabor de antojitos como tamales, elotes y helados refrescantes. Frente a la plaza, el Templo de San Nicolás Tolentino, con sus muros de piedra, resuena con campanas durante la fiesta patronal del 1 al 10 de septiembre, llena de danzas, pirotecnia y jaripeos.
+    </p>
+    <img src="https://escapadas.mexicodesconocido.com.mx/wp-content/uploads/2023/09/slp_tierranueva.jpg" alt="Templo de San Nicolás Tolentino" />
+    <p>
+      Explora la comunidad de Los Charcos, donde la laja roja, trabajada desde 1900, brilla bajo el sol. Camina el Cerro de León, sintiendo la brisa y capturando vistas panorámicas. En la Presa La Muñeca, el reflejo del agua y el canto de las aves acompañan la pesca deportiva, el senderismo o el camping bajo un cielo estrellado.
+    </p>
+    <img src="https://escapadas.mexicodesconocido.com.mx/wp-content/uploads/2023/09/WhatsApp-Image-2023-09-19-at-10.07.15-AM.jpeg" alt="Presa La Muñeca" />
+    <p>
+      En el Barrio del Señor de la Piedad, toca artesanías de barro, madera y laja, y prueba mieles de abeja y dulces típicos. Las Sierras del Divisadero, La Ciénega y El Camarón te invitan a caminar senderos entre cerros, rodeado del aroma a pino y tierra.
+    </p>
+    <img src="https://escapadas.mexicodesconocido.com.mx/wp-content/uploads/2023/09/palmoro-hats.jpg" alt="Fábrica de sombreros Palmoro Hats" />
+    <p>
+      Durante la Fiesta de la Santa Cruz, 2 y 3 de mayo, o las celebraciones de los Seis Barrios, escucha el bullicio de peregrinaciones, el olor a tamales y enchiladas, y el ritmo de danzas tradicionales que llenan de vida este pueblo.
+    </p>
+    <p>
+      ¡Visítalo!
+    </p>
+  </div>
+  <footer>
+    &copy; 2025 - Códigos que Hablan - Secretaría de Turismo
+  </footer>
+</body>
+</html>
