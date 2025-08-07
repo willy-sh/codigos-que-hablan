@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Real de Catorce, un Pueblo Mágico - Códigos que Hablan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { margin: 0; font-family: "Georgia", serif; background-color: #f0f9f0; color: #1e3d1e; }
+    header { background: #2a5d2a; color: #ffffff; padding: 1.5rem; text-align: center; }
+    h1 { margin: 0; font-size: 2rem; }
+    header p { font-size: 1.1rem; color: #c7f5c7; }
+    .contenido { max-width: 900px; margin: auto; padding: 2rem; }
+    .contenido img { max-width: 100%; border-radius: 8px; margin: 1.5rem 0; display: block; }
+    .contenido p { line-height: 1.6; text-align: justify; }
+    .contenido h2 { font-size: 1.5rem; color: #2a5d2a; margin-top: 2rem; }
+    footer { background: #1c3b1c; color: white; text-align: center; padding: 1rem; }
+    #touchOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 9999; }
+  </style>
+</head>
+<body>
+  <audio id="audio" autoplay>
+    <source src="AudioRealdeCatorce.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
+  <div id="touchOverlay"></div>
+  <script>
+    const audio = document.getElementById("audio");
+    const overlay = document.getElementById("touchOverlay");
+    const playAudio = () => {
+      audio.play().then(() => { overlay.style.display = "none"; }).catch(() => {});
+    };
+    overlay.addEventListener("touchstart", playAudio, { once: true });
+    overlay.addEventListener("click", playAudio, { once: true });
+  </script>
+  <header>
+    <h1>Real de Catorce, un Pueblo Mágico</h1>
+    <p>Proyecto inclusivo: Códigos que Hablan</p>
+  </header>
+  <div class="contenido">
+    <p>
+      El antiguo real de minas fundado en 1778 en el Altiplano de San Luis Potosí, te espera con su encanto místico. Para llegar, atraviesas el Túnel de Ogarrio, un pasaje de 2.3 kilómetros tallado en roca, donde el eco y el aire fresco te envuelven antes de desembocar en el pueblo.
+    </p>
+    <img src="https://www.gob.mx/cms/uploads/article/main_image/83572/Tunel-de-Ogarrio-_san-luis-potosi_real-de-catorce_web.jpg" alt="Túnel de Ogarrio" />
+    <p>
+      En la Plaza Principal en la Calle Juárez, el templo de la Purísima Concepción resguarda la venerada imagen de San Francisco de Asís, que atrae peregrinos cada 4 de octubre. Escucharás campanas y olerás flores frescas. Cerca, la Casa de Moneda, de muros de piedra, y el Palacio Municipal del siglo XIX, con detalles de madera, evocan el pasado. El Palenque de Gallos en la calle Xicoténcatl, entre calle Libertad y Av. Zaragoza., con asientos de piedra recuerda un teatro griego, mientras las ruinas de la Plaza de Toros son ideales para fotos.
+    </p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Parroquia_de_la_Pur%C3%ADsima_Concepci%C3%B3n_Real_de_Catorce.jpg" alt="Templo de la Purísima Concepción" />
+    <p>
+      Vive la aventura explorando los alrededores a caballo, sintiendo el aroma a hierbas silvestres, o en un Willy, un todoterreno que recorre caminos rocosos y planicies desérticas hasta los 3 mil metros de altura, descubriendo poblados llenos de historia y leyendas.
+    </p>
+    <p>
+      Descubre los tesoros alrededor de Real de Catorce, cada uno con su propio encanto. En Alamitos, el susurro de los álamos, la brisa fresca y el crujir de las hojas acompañan tus recorridos entre paisajes verdes. En Potrero, el pasado susurra en la Iglesia Mocha, de piedra desgastada, y los arcos del antiguo acueducto, testigos de viejas haciendas. Toca la rugosidad de sus muros y escucha el eco del viento entre las ruinas.
+    </p>
+    <img src="https://eltiempodelaltiplano.com/wp-content/uploads/2022/08/images-2022-08-17T190404.870.jpeg" alt="Mina de Santa Ana" />
+    <p>
+      La Luz te recibe con la mina de Santa Ana, donde el aire lleva un leve olor a tierra húmeda. Cerca, una torre de cantera resguarda un reloj donado por Porfirio Díaz, cuyo tic-tac resuena en la quietud del pueblo. Los Catorce, una joya desértica, brilla con manantiales que reflejan el sol y huertos de aguacate que perfuman el aire. Camina entre sus senderos y siente la frescura del agua en tus manos.
+    </p>
+    <p>
+      En San Antonio de Coronados, un legendario pueblo minero, los senderos invitan a caminar entre colinas áridas. Relájate en su centro recreativo, con cabañas de madera, un temazcal humeante y una alberca de aguas termales que calientan la piel. Finalmente, Estación Catorce, el corazón poblacional del municipio, evoca su pasado como parador ferroviario. Desde aquí comienza Wirikuta, tierra sagrada del pueblo wixárika, llena de misticismo y tradiciones ancestrales ligadas al peyote. Escucha el silencio del desierto y siente la energía de este lugar sagrado.
+    </p>
+  </div>
+  <footer>
+    &copy; 2025 - Códigos que Hablan - Secretaría de Turismo
+  </footer>
+</body>
+</html>
