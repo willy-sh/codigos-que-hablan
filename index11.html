@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ciudad del Maíz, Pueblo Mágico - Códigos que Hablan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { margin: 0; font-family: "Georgia", serif; background-color: #f0f9f0; color: #1e3d1e; }
+    header { background: #2a5d2a; color: #ffffff; padding: 1.5rem; text-align: center; }
+    h1 { margin: 0; font-size: 2rem; }
+    header p { font-size: 1.1rem; color: #c7f5c7; }
+    .contenido { max-width: 900px; margin: auto; padding: 2rem; }
+    .contenido img { max-width: 100%; border-radius: 8px; margin: 1.5rem 0; display: block; }
+    .contenido p { line-height: 1.6; text-align: justify; }
+    .contenido h2 { font-size: 1.5rem; color: #2a5d2a; margin-top: 2rem; }
+    footer { background: #1c3b1c; color: white; text-align: center; padding: 1rem; }
+    #touchOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 9999; }
+  </style>
+</head>
+<body>
+  <audio id="audio" autoplay>
+    <source src="AudioCiudadMaiz.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
+  <div id="touchOverlay"></div>
+  <script>
+    const audio = document.getElementById("audio");
+    const overlay = document.getElementById("touchOverlay");
+    const playAudio = () => {
+      audio.play().then(() => { overlay.style.display = "none"; }).catch(() => {});
+    };
+    overlay.addEventListener("touchstart", playAudio, { once: true });
+    overlay.addEventListener("click", playAudio, { once: true });
+  </script>
+  <header>
+    <h1>Ciudad del Maíz, Pueblo Mágico</h1>
+    <p>Proyecto inclusivo: Códigos que Hablan</p>
+  </header>
+  <div class="contenido">
+    <p>
+      Ciudad del Maíz, en la Región Media de San Luis Potosí, es un Pueblo Mágico lleno de historia y tradiciones. Ubicado en un valle rodeado de colinas, su aire lleva el aroma a tierra cálida y maíz recién cosechado.
+    </p>
+    <img src="https://www.mexicoenfotos.com/MX12709020141303.jpg" alt="Parroquia de la Purísima Concepción" />
+    <p>
+      En la Calle de Manuel José Othón 41, El Callejón, en su centro histórico, la Parroquia de la Purísima Concepción, construida en el siglo XVIII, destaca con su fachada neoclásica y una cúpula que parece tocar el cielo. Toca sus muros de cantera frescos y escucha el repique único de su reloj, obra de la Joyería La Esmeralda, con maquinaria de oro. Cerca, la Casa Barragán, hoy presidencia municipal, guarda ecos de batallas independentistas y visitas revolucionarias.
+    </p>
+    <img src="https://escapadas.mexicodesconocido.com.mx/wp-content/uploads/2023/09/Mural-el-Tepeyac-Portada-scaled.jpeg" alt="Murales en El Tepeyac" />
+    <p>
+      En la comunidad de El Tepeyac, dos murales de Diego Rivera y sus alumnos te envuelven en historia. "Ritual de una alegoría" muestra la aparición guadalupana con colores vibrantes, mientras "Transformación del Tepeyac", en mosaico veneciano, brilla bajo el sol, retratando al empresario Jorge Pasquel. Siente la textura de las teselas bajo tus dedos.
+    </p>
+    <p>
+      La Semana Santa Indígena Xi’ui, celebrada por más de 300 años, llena el aire con música, tambores y el zapateo de danzas tradicionales. En el Ejido San José, la Danza del Caballito de San Martín Caballero resuena con pasos rítmicos y el relinchar de caballos adornados. Escucha las risas y aplausos de la comunidad pame xi’ui, que mantiene viva su herencia.
+    </p>
+    <img src="https://sanluis.eluniversal.com.mx/resizer/v2/DNQQOR23EFFVDGVEFXNXDJS37Y.jpg?auth=298ebf731207822f881cc083307dd95a20b14c70d5accae10cb7503f5a65808c&…length" alt="Danza indígena xi’ui" />
+    <p>
+      Saborea el guiso borracho, un platillo pame del siglo XVIII, con el toque único del pulque, carnes tiernas y verduras frescas. Su aroma especiado te transporta a las cocinas tradicionales, donde el calor del fogón abraza.
+    </p>
+    <p>
+      Ciudad del Maíz, cuna de figuras como el músico huasteco El Negro Marcelino, el actor Noé Murayama y la pionera piloto María Marcos Cedillo, te invita a caminar su historia y sentir su alma vibrante. ¡Vive su magia!
+    </p>
+  </div>
+  <footer>
+    &copy; 2025 - Códigos que Hablan - Secretaría de Turismo
+  </footer>
+</body>
+</html>
