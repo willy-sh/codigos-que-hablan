@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Xilitla, el Pueblo Mágico surrealista - Códigos que Hablan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      background-color: #f0f9f0;
+      color: #1e3d1e;
+    }
+    header {
+      background: #2a5d2a;
+      color: #ffffff;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #c7f5c7;
+    }
+    .contenido {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .contenido img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      display: block;
+    }
+    .contenido h2 {
+      font-size: 1.5rem;
+      color: #2a5d2a;
+      margin-top: 2rem;
+    }
+    .contenido p {
+      line-height: 1.6;
+    }
+    footer {
+      background: #1c3b1c;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    #touchOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: transparent;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <audio id="audio" autoplay>
+    <source src="AudioXilitla.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
+
+  <div id="touchOverlay"></div>
+
+  <script>
+    const audio = document.getElementById("audio");
+    const overlay = document.getElementById("touchOverlay");
+
+    const playAudio = () => {
+      audio.play().then(() => {
+        overlay.style.display = "none";
+      }).catch(() => {
+        // nada
+      });
+    };
+
+    overlay.addEventListener("touchstart", playAudio, { once: true });
+    overlay.addEventListener("click", playAudio, { once: true });
+  </script>
+
+  <header>
+    <h1>Xilitla, el Pueblo Mágico surrealista</h1>
+    <p>Proyecto inclusivo: Códigos que Hablan</p>
+  </header>
+
+  <div class="contenido">
+    <p>
+      En la Huasteca potosina, encontrarás un pueblo donde el surrealismo de Edward James se entrelaza con las tradiciones de los pueblos nahua y teenek. Enclavado en montañas, este lugar hechiza con su niebla envolvente, el aroma a café recién tostado y el murmullo de la naturaleza.
+    </p>
+
+    <p>
+      Recorre sus calles empinadas y circulares, de adoquín y tierra, que serpentean alrededor de un cerro. Los callejones, a veces inconclusos, te guían entre casas de colores vibrantes y construcciones que parecen desafiar la lógica, como un sueño arquitectónico. Siente la brisa húmeda en la piel y escucha el eco de risas y pasos en la distancia.
+    </p>
+
+    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/cf/59/ab/pozas.jpg?w=900&h=500&s=1" alt="Jardín Escultórico Las Pozas" />
+
+    <p>
+      El legado de Edward James vive en cada rincón, especialmente en sus esculturas surrealistas, como las del Jardín Escultórico Las Pozas, donde el musgo y la selva abrazan formas imposibles de concreto. Aquí, el canto de las aves y el rumor del agua te sumergen en un mundo onírico.
+    </p>
+
+    <p>
+      Visita el mercado para saborear tamales calientes y oler las especias frescas. Por la noche, la niebla puede cubrir el pueblo, creando un silencio mágico roto solo por el croar de las ranas. Xilitla tiene un “no sé qué” que invita a sentirlo, a tocar sus muros rugosos, a caminar sus senderos y a dejarte llevar por su encanto único.
+    </p>
+
+    <h2>Xilitla y sus maravillas</h2>
+
+    <img src="https://www.debate.com.mx/img/2021/05/25/188663270_217153209958072_7093768247309568579_n_crop1621966336185.jpg?__scale=w:1200,h:740,t:2" alt="Vista panorámica de Xilitla" />
+
+    <p>
+      Xilitla, en la Huasteca potosina, es un laberinto de escaleras de concreto y piedra que trepan por sus colinas, conectando casas y comercios. El roce de tus pasos sobre los escalones resuena mientras el aroma a café orgánico, intenso y cálido, llena las calles al amanecer y al atardecer. Saborea una taza humeante de café o chocolate, y siente cómo su calor te impulsa a explorar.
+    </p>
+
+    <p>
+      En el Jardín Escultórico de Edward James, Las Pozas, las escaleras de concreto desafían la lógica: ascienden sin destino, perdiéndose entre la selva. Toca sus bordes rugosos y escucha el murmullo de las cascadas cercanas, mientras el aire húmedo y el canto de las aves te envuelven en un sueño surrealista.
+    </p>
+
+    <img src="https://media-cdn.tripadvisor.com/media/photo-s/05/e6/25/fc/aventurate-private-tour.jpg" alt="Convento de San Agustín" />
+
+    <p>
+      Visita el Convento de San Agustín, la construcción hispana más antigua de San Luis Potosí. Sus muros de piedra, frescos al tacto, guardan siglos de historia. Cerca, el “castillo”, hoy un hotel íntimo con pocas habitaciones, te recibe con su arquitectura peculiar, como sacada de un cuento.
+    </p>
+
+    <p>
+      Xilitla, con su niebla mística y su energía única, te invita a descubrir sus secretos en cada escalón y rincón.
+    </p>
+  </div>
+
+  <footer>
+    &copy; 2025 - Códigos que Hablan - Secretaría de Turismo
+  </footer>
+</body>
+</html>
