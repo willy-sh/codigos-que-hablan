@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aquismón, un Pueblo Mágico en la Huasteca Potosina - Códigos que Hablan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { margin: 0; font-family: "Georgia", serif; background-color: #f0f9f0; color: #1e3d1e; }
+    header { background: #2a5d2a; color: #ffffff; padding: 1.5rem; text-align: center; }
+    h1 { margin: 0; font-size: 2rem; }
+    header p { font-size: 1.1rem; color: #c7f5c7; }
+    .contenido { max-width: 900px; margin: auto; padding: 2rem; }
+    .contenido img { max-width: 100%; border-radius: 8px; margin: 1.5rem 0; display: block; }
+    .contenido h2 { font-size: 1.5rem; color: #2a5d2a; margin-top: 2rem; }
+    .contenido p { line-height: 1.6; }
+    footer { background: #1c3b1c; color: white; text-align: center; padding: 1rem; }
+    #touchOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 9999; }
+  </style>
+</head>
+<body>
+  <audio id="audio" autoplay>
+    <source src="AudioAquismon.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
+  <div id="touchOverlay"></div>
+  <script>
+    const audio = document.getElementById("audio");
+    const overlay = document.getElementById("touchOverlay");
+    const playAudio = () => {
+      audio.play().then(() => { overlay.style.display = "none"; }).catch(() => {});
+    };
+    overlay.addEventListener("touchstart", playAudio, { once: true });
+    overlay.addEventListener("click", playAudio, { once: true });
+  </script>
+  <header>
+    <h1>Aquismón, un Pueblo Mágico en la Huasteca Potosina</h1>
+    <p>Proyecto inclusivo: Códigos que Hablan</p>
+  </header>
+  <div class="contenido">
+    <p>
+      Aquismón, en el corazón de la Huasteca Potosina, se encuentra a 45 kilómetros al norte de Xilitla y 55 kilómetros al sur de Ciudad Valles. Este Pueblo Mágico, hogar de los indígenas teenek y, en menor medida, hablantes de náhuatl y xi’u o pames, es el punto de partida para explorar las maravillas naturales y culturales de San Luis Potosí.
+    </p>
+    <p>
+      Camina por sus calles y siente el calor del sol en la piel, mientras el aroma a café recién tostado y vainilla dulce llena el aire. En el Mercado de La Mora, el bullicio de las voces teenek se mezcla con el suave roce de las agujas bordando textiles vibrantes. Toca las telas llenas de texturas y descubre artesanías de madera y piloncillo, creadas por manos expertas.
+    </p>
+    <p>
+      En la calle de Javier Manrique, en el centro, la Parroquia de San Miguel Arcángel, con sus muros de cantera frescos al tacto, es el corazón del pueblo. Cada 28 y 29 de septiembre, las fiestas en honor al santo patrono llenan Aquismón de vida. Escucha el ritmo de la música regional, el zapateo de las danzas tradicionales y el alegre murmullo de la multitud, mientras los colores de los trajes típicos danzan en el aire, celebrando una herencia milenaria que sigue viva.
+    </p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Cascada_de_Tamul_vista_desdes_abajo.jpg" alt="Cascada de Tamul" />
+    <p>
+      Desde Aquismón, en la Huasteca Potosina, la naturaleza te invita a una aventura inolvidable. Siente el rocío en tu rostro al acercarte a la Cascada de Tamul, donde el río Santa María se precipita 105 metros con un rugido ensordecedor, envolviéndote en una brisa fresca y húmeda.
+    </p>
+    <p>
+      Navega el río Tampaón, de aguas turquesas que reflejan el sol. Mientras practicas rafting, escucha el chapoteo de los remos y el eco de los cuatro cañones que te rodean, con paredes rocosas que se alzan imponentes.
+    </p>
+    <img src="https://tvazteca.brightspotcdn.com/dims4/default/2e06c5c/2147483647/strip/true/crop/1200x740+0+29/resize/1200x740!/format/jpg/quality/90/?url=http%3A%2F%2Ftv-azteca-brightspot.s3.amazonaws.com%2F17%2F62%2F1bda2e3b46f5a31d10924ff68182%2Fel-sotano-de-las-golondrinas-tu-proxima-parada-en-san-luis-potosi.jpg" alt="Sótano de las Golondrinas" />
+    <p>
+      Explora los Sótano de las Golondrinas, con su profundidad de 512 metros, donde el silbido del viento y el aleteo de miles de aves resuenan en la oscuridad. Cerca, el Sótano de las Huahuas, con caídas de 202 y 153 metros, te envuelve en un silencio profundo roto por el goteo del agua.
+    </p>
+    <p>
+      Adéntrate en la Cueva de Mantetzulel, donde rayos de luz natural danzan sobre las paredes, creando un juego de sombras. O visita la Cueva de El Aguacate, impregnada de incienso y hierbas, donde los médicos tradicionales realizan limpias y rituales, llenando el aire con cantos y una energía mística.
+    </p>
+    <img src="https://live.staticflickr.com/4342/35866987934_2fd6920bd1_b.jpg" alt="Parroquia de San Miguel Arcángel" />
+    <p>
+      ¡Mil aventuras te esperan en el Pueblo Mágico de Aquismón!
+    </p>
+  </div>
+  <footer>
+    &copy; 2025 - Códigos que Hablan - Secretaría de Turismo
+  </footer>
+</body>
+</html>
