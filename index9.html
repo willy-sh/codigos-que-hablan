@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Santa María del Río, cuna del rebozo - Códigos que Hablan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { margin: 0; font-family: "Georgia", serif; background-color: #f0f9f0; color: #1e3d1e; }
+    header { background: #2a5d2a; color: #ffffff; padding: 1.5rem; text-align: center; }
+    h1 { margin: 0; font-size: 2rem; }
+    header p { font-size: 1.1rem; color: #c7f5c7; }
+    .contenido { max-width: 900px; margin: auto; padding: 2rem; }
+    .contenido img { max-width: 100%; border-radius: 8px; margin: 1.5rem 0; display: block; }
+    .contenido h2 { font-size: 1.5rem; color: #2a5d2a; margin-top: 2rem; }
+    .contenido p { line-height: 1.6; }
+    footer { background: #1c3b1c; color: white; text-align: center; padding: 1rem; }
+    #touchOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 9999; }
+  </style>
+</head>
+<body>
+  <audio id="audio" autoplay>
+    <source src="AudioSantaMaria.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
+  <div id="touchOverlay"></div>
+  <script>
+    const audio = document.getElementById("audio");
+    const overlay = document.getElementById("touchOverlay");
+    const playAudio = () => {
+      audio.play().then(() => { overlay.style.display = "none"; }).catch(() => {});
+    };
+    overlay.addEventListener("touchstart", playAudio, { once: true });
+    overlay.addEventListener("click", playAudio, { once: true });
+  </script>
+  <header>
+    <h1>Santa María del Río, cuna del rebozo</h1>
+    <p>Proyecto inclusivo: Códigos que Hablan</p>
+  </header>
+  <div class="contenido">
+    <p>
+      Santa María del Río, nombrado Pueblo Mágico en 2020 y fundado en 1542, se encuentra a solo 20 minutos de San Luis Potosí. Conocido como la “cuna del rebozo”, este pueblo vibra con tradición. Sus calles, flanqueadas por casonas coloniales de piedra y adobe, exhalan un aroma a dulces de membrillo, campechanas horneadas y tierra calentada por el sol.
+    </p>
+    <p>
+      En el centro, visita los talleres artesanales donde el suave roce de los hilos en el telar de cintura crea rebozos con la técnica ikat. Toca la textura sedosa del famoso rebozo de bolita, o descubre diseños como el barbilla, palomo o la chalina de un solo color. En la Escuela del Rebozo, escucha el rítmico golpeteo de los telares y siente el orgullo de los artesanos, muchos premiados por sus obras maestras.
+    </p>
+    <img src="https://soundtravel.com.mx/wp-content/uploads/2020/06/2016-04-10-11.09.31-2.jpg" alt="Telar artesanal de rebozos" />
+    <p>
+      Camina por la Plaza Principal, donde el quiosco de hierro forjado es el corazón del pueblo. A su alrededor, la Iglesia de la Asunción, con muros frescos de cantera, y la Capilla de la Purísima resuenan con campanas. Cerca, la torre del reloj marca el tiempo con un tic-tac pausado, mientras el Jardín Hidalgo y la Plaza Martín Bautista te envuelven en el murmullo de las voces y el canto de las aves.
+    </p>
+    <img src="https://i.pinimg.com/736x/fd/f7/d6/fdf7d699312b5d540203a3e22a75bede.jpg" alt="Iglesia de la Asunción" />
+    <p>
+      En los alrededores del Palacio Municipal, el olor a muéganos, queso de tuna y dulces de leche te guía a tiendas llenas de rebozos y delicias. Saborea el asado de boda, con su salsa especiada, los nopales en escabeche, frescos y crujientes, o la barbacoa, tierna y humeante, en los restaurantes locales.
+    </p>
+    <img src="https://sanluis.eluniversal.com.mx/resizer/v2/4KPYTIKAZRDFDK5I4CPWLDVNHQ.jpg?auth=17d7d33a3ef2bdaf5ae4edc33e39317b9d4a2c2c93aca1161d326c02bfa8d9ee&smart=true&width=400" alt="Dulces típicos y comida local" />
+    <p>
+      El Pueblo Mágico de Santa María del Río te abraza con su historia, sus telas y sus sabores, invitándote a sentir su legado en cada rincón.
+    </p>
+  </div>
+  <footer>
+    &copy; 2025 - Códigos que Hablan - Secretaría de Turismo
+  </footer>
+</body>
+</html>
